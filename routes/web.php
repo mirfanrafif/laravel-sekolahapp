@@ -18,3 +18,4 @@ Route::get('/', function () {
 });
 
 Route::resource('kelas', 'KelasController');
+Route::resource('siswa', 'SiswaController');
