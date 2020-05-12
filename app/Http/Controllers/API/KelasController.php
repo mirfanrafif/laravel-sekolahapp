@@ -57,7 +57,7 @@ class KelasController extends Controller
      */
     public function show($id)
     {
-        $kelas = Kelas::findOrFail($id);
+        $kelas = Kelas::findOrFail($id)->get();
         $siswa = $kelas->siswa;
         $walikelas = Kelas::find($id)->guru;
 
