@@ -8,7 +8,7 @@
     <h3 class="card-title">Tambah Data</h3>
   </div>
   <div class="card-body">
-    <form action="{{route('kelas.store')}}" method="post">
+    <form action="/kelas" method="post">
       @csrf
       <div class="form-group">
         <label for="nama">Nama Kelas</label>

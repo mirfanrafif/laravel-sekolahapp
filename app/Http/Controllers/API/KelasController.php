@@ -57,14 +57,17 @@ class KelasController extends Controller
      */
     public function show($id)
     {
-        $kelas = Kelas::findOrFail($id)->get();
-        $siswa = $kelas->siswa;
-        $walikelas = Kelas::find($id)->guru;
-
-        $res['message'] = "Success";
-        $res['detail'] = $kelas;
-        $res['siswa'] = $siswa;
-        $res['wali_kelas'] = $walikelas;
+        $kelas = Kelas::find($id);
+        if ($kelas) {
+            $kelas->siswa;
+            if ($kelas->guru_id) {
+                $kelas->guru;
+            }
+            $res['message'] = "Success";
+            $res['detail'] = $kelas;
+        } else {
+            $res['message'] = "tidak ada dalam database";
+        }
 
         return $res;
     }

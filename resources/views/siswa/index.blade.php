@@ -5,6 +5,10 @@
 @section('content')
 
 <div class="card">
+  <div class="card-header">
+    <h3 class="card-title">Data Semua Siswa</h3>
+    <a href="/siswa/create" class="btn btn-primary float-right">Tambah</a>
+  </div>
   <div class="card-body p-0">
     <table class="table table-hover">
       <thead>
@@ -13,6 +17,7 @@
           <th>NIS</th>
           <th>Nama</th>
           <th>Tahun Ajar</th>
+          <th>Aksi</th>
         </tr>
       </thead>
       <tbody>
@@ -22,6 +27,9 @@
           <td>{{$item->nis}}</td>
           <td>{{$item->nama}}</td>
           <td>{{$item->tahun_ajar}}</td>
+          <td>
+            <a href="/siswa/{{$item->id}}" class="btn btn-info"><i class="fa fa-eye" aria-hidden="true"></i></a>
+          </td>
         </tr>
         @endforeach
       </tbody>

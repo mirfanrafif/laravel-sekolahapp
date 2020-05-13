@@ -39,7 +39,12 @@
         </select>
       </div>
       <button type="submit" class="btn btn-success">Kirim</button>
+      <form action="/kelas/{{$kelas->id}}" method="post">
+        {{ method_field('delete') }}
+        <button class="btn btn-danger float-right" type="submit">Delete</button>
+      </form>
     </form>
+
   </div>
 </div>
 <script>

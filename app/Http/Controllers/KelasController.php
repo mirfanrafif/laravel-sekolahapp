@@ -60,7 +60,11 @@ class KelasController extends Controller
     {
         $kelas = Kelas::findOrFail($id);
         $siswa = $kelas->siswa;
-        $walikelas = Kelas::find($id)->guru;
+        if ($kelas->guru_id) {
+            $walikelas = Kelas::find($id)->guru;
+        } else {
+            $walikelas = 'tidak ada';
+        }
 
         return view('kelas.detail', [
             'detail' => $kelas,
@@ -114,6 +118,10 @@ class KelasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $kelas = Kelas::findOrFail($id);
+
+        if ($kelas->delete()) {
+            return redirect('/kelas', 'refresh');
+        }
     }
 }

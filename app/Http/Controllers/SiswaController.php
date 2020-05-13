@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Kelas;
 use App\Siswa;
 use Illuminate\Http\Request;
 
@@ -26,7 +27,9 @@ class SiswaController extends Controller
      */
     public function create()
     {
-        //
+        $kelas = Kelas::all();
+
+        return view('siswa.tambah', ['listKelas' => $kelas]);
     }
 
     /**
@@ -37,7 +40,17 @@ class SiswaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $siswa = new Siswa();
+
+        $siswa->nis = $request->nis;
+        $siswa->nama = $request->nama;
+        $siswa->tgl_lahir = $request->tgl_lahir;
+        $siswa->tahun_ajar = $request->tahun_ajar;
+        $siswa->kelas_id = $request->id_kelas;
+
+        if ($siswa->save()) {
+            return redirect('/siswa');
+        }
     }
 
     /**
