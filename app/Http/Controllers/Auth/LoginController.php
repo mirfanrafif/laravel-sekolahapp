@@ -40,19 +40,19 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    protected function attemptLogin(Request $request)
-    {
-        $user = User::where([
-            'email' => $request->email,
-            'password' => md5($request->password)
-        ])->first();
+    // protected function attemptLogin(Request $request)
+    // {
+    //     $user = User::where([
+    //         'email' => $request->email,
+    //         'password' => md5($request->password)
+    //     ])->first();
 
-        if ($user) {
-            $this->guard()->login($user, $request->has('remember'));
+    //     if ($user) {
+    //         $this->guard()->login($user, $request->has('remember'));
 
-            return true;
-        }
+    //         return true;
+    //     }
 
-        return false;
-    }
+    //     return false;
+    // }
 }
