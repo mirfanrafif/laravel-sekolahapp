@@ -8,7 +8,7 @@
     <h3 class="card-title">Ubah Data</h3>
   </div>
   <div class="card-body">
-    <form action="/kelas/{{$kelas->id}}" method="post">
+    <form action="/admin/kelas/{{$kelas->id}}" method="post">
       @method('PUT')
       @csrf
       <div class="form-group">

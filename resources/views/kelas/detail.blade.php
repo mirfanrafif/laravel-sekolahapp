@@ -16,12 +16,12 @@
     @else
     <p>Wali Kelas : tidak ada</p>
     @endif
-    <form action="/kelas/{{$detail->id}}" method="post">
+    <form action="/admin/kelas/{{$detail->id}}" method="post">
       @csrf
       @method('DELETE')
       <button class="btn btn-danger float-right ml-2" type="submit">Hapus</button>
     </form>
-    <a href="/kelas/{{$detail->id}}/edit" class="btn btn-warning float-right">Ubah</a>
+    <a href="/admin/kelas/{{$detail->id}}/edit" class="btn btn-warning float-right">Ubah</a>
   </div>
 </div>
 <div class="card">

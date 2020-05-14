@@ -11,7 +11,7 @@
 <div class="row">
   @foreach ($kelas as $item)
   <div class="col-md-4">
-    <a href="/kelas/{{$item->id}}" class="card">
+    <a href="/admin/kelas/{{$item->id}}" class="card">
       <img class="card-img-top" src="https://placeimg.com/640/480/nature" alt=""
         style="object-fit: cover; height: 150px;">
       <div class="card-body">
@@ -22,6 +22,6 @@
   </div>
   @endforeach
 </div>
-<a href="{{route('kelas.create')}}" class="btn btn-primary float-right">Tambah</a>
+<a href="/admin/kelas/create" class="btn btn-primary float-right">Tambah</a>
 
 @endsection

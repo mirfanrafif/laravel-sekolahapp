@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,5 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('kelas', 'KelasController');
-Route::resource('siswa', 'SiswaController');
+Route::resource('/admin/kelas', 'KelasController');
+Route::resource('/admin/siswa', 'SiswaController');
+Route::resource('/admin/nilai', 'NilaiController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
