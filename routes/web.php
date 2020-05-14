@@ -17,10 +17,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/admin/kelas', 'KelasController');
-Route::resource('/admin/siswa', 'SiswaController');
-Route::resource('/admin/nilai', 'NilaiController');
-
 Auth::routes();
+
+Route::resource('/admin/kelas', 'KelasController')->middleware('auth');
+Route::resource('/admin/siswa', 'SiswaController')->middleware('auth');
+Route::resource('/admin/nilai', 'NilaiController')->middleware('auth');
+
 
 Route::get('/home', 'HomeController@index')->name('home');
