@@ -42,7 +42,13 @@ class SiswaController extends Controller
     {
         $siswa = new Siswa();
 
-        $siswa->nis = $request->nis;
+        $this->validate($request, [
+            'nama' => 'required',
+            'tgl_lahir' => 'required|date',
+            'tahun_ajar' => 'required|numeric',
+            'id_kelas' => 'required|numeric'
+        ]);
+
         $siswa->nama = $request->nama;
         $siswa->tgl_lahir = $request->tgl_lahir;
         $siswa->tahun_ajar = $request->tahun_ajar;
@@ -59,9 +65,11 @@ class SiswaController extends Controller
      * @param  \App\Siswa  $siswa
      * @return \Illuminate\Http\Response
      */
-    public function show(Siswa $siswa)
+    public function show($nis)
     {
-        //
+        $siswa = Siswa::find($nis);
+
+        return view('siswa.detail', ['siswa' => $siswa]);
     }
 
     /**
@@ -70,9 +78,14 @@ class SiswaController extends Controller
      * @param  \App\Siswa  $siswa
      * @return \Illuminate\Http\Response
      */
-    public function edit(Siswa $siswa)
+    public function edit($nis)
     {
-        //
+        $siswa = Siswa::find($nis);
+        $kelas = Kelas::all();
+        return view('siswa.ubah', [
+            'siswa' => $siswa,
+            'listKelas' => $kelas
+        ]);
     }
 
     /**
@@ -82,9 +95,29 @@ class SiswaController extends Controller
      * @param  \App\Siswa  $siswa
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Siswa $siswa)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'nis' => 'required',
+            'nama' => 'required',
+            'tgl_lahir' => 'required|date',
+            'tahun_ajar' => 'required|numeric',
+            'id_kelas' => 'required|numeric'
+        ]);
+
+        $siswa = Siswa::find($id);
+
+        $siswa->nis = $request->nis;
+        $siswa->nama = $request->nama;
+        $siswa->tgl_lahir = $request->tgl_lahir;
+        $siswa->tahun_ajar = $request->tahun_ajar;
+        $siswa->kelas_id = $request->id_kelas;
+
+        if ($siswa->save()) {
+            return redirect('/siswa');
+        } else {
+            return redirect('/siswa')->with('message', 'Gagal Mengubah Data');
+        }
     }
 
     /**
@@ -93,8 +126,12 @@ class SiswaController extends Controller
      * @param  \App\Siswa  $siswa
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Siswa $siswa)
+    public function destroy($id)
     {
-        //
+        $siswa = Siswa::find($id);
+
+        if ($siswa->delete()) {
+            return redirect('/siswa');
+        }
     }
 }

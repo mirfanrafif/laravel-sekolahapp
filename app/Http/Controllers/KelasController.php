@@ -120,8 +120,11 @@ class KelasController extends Controller
     {
         $kelas = Kelas::findOrFail($id);
 
-        if ($kelas->delete()) {
-            return redirect('/kelas', 'refresh');
+        if (count($kelas->siswa) == 0) {
+            $kelas->delete();
+            return redirect('/kelas')->with('message', 'Berhasil Menghapus Data');;
+        } else {
+            return redirect('/kelas')->with('message', 'Gagal Menghapus Data. Pindahkan siswa ke kelas lain terlebih dahulu.');
         }
     }
 }

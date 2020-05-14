@@ -3,7 +3,11 @@
 @section('title', 'Data Kelas')
 
 @section('content')
-
+@if (session('message'))
+<div class="alert alert-success alert-dismissible">
+  {{ session('message') }}
+</div>
+@endif
 <div class="row">
   @foreach ($kelas as $item)
   <div class="col-md-4">

@@ -17,6 +17,7 @@
           <th>NIS</th>
           <th>Nama</th>
           <th>Tahun Ajar</th>
+          <th>Kelas</th>
           <th>Aksi</th>
         </tr>
       </thead>
@@ -27,8 +28,9 @@
           <td>{{$item->nis}}</td>
           <td>{{$item->nama}}</td>
           <td>{{$item->tahun_ajar}}</td>
+          <td>{{$item->kelas->nama_kelas}}</td>
           <td>
-            <a href="/siswa/{{$item->id}}" class="btn btn-info"><i class="fa fa-eye" aria-hidden="true"></i></a>
+            <a href="/siswa/{{$item->nis}}" class="btn btn-info"><i class="fa fa-eye" aria-hidden="true"></i></a>
           </td>
         </tr>
         @endforeach

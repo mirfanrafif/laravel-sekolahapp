@@ -6,13 +6,22 @@
 <div class="card">
   <div class="card-header">
     <h3 class="card-title">{{$detail->nama_kelas}}</h3>
-    <a href="/kelas/{{$detail->id}}/edit" class="btn btn-warning float-right">Ubah</a>
   </div>
   <div class="card-body">
     <p>Nama Kelas : {{$detail->nama_kelas}}</p>
     <p>Jurusan : {{$detail->jurusan}}</p>
     <p>Jumlah Siswa : {{$detail->jumlah_siswa}}</p>
+    @if ($walikelas != 'tidak ada')
     <p>Wali Kelas : {{$walikelas->nama}}</p>
+    @else
+    <p>Wali Kelas : tidak ada</p>
+    @endif
+    <form action="/kelas/{{$detail->id}}" method="post">
+      @csrf
+      @method('DELETE')
+      <button class="btn btn-danger float-right ml-2" type="submit">Hapus</button>
+    </form>
+    <a href="/kelas/{{$detail->id}}/edit" class="btn btn-warning float-right">Ubah</a>
   </div>
 </div>
 <div class="card">
