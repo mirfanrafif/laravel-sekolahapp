@@ -7,7 +7,7 @@
 <div class="card">
   <div class="card-header">
     <h3 class="card-title">Data Semua Siswa</h3>
-    <a href="/siswa/create" class="btn btn-primary float-right">Tambah</a>
+    <a href="/admin/siswa/create" class="btn btn-primary float-right">Tambah</a>
   </div>
   <div class="card-body p-0">
     <table class="table table-hover">
@@ -30,7 +30,7 @@
           <td>{{$item->tahun_ajar}}</td>
           <td>{{$item->kelas->nama_kelas}}</td>
           <td>
-            <a href="/siswa/{{$item->nis}}" class="btn btn-info"><i class="fa fa-eye" aria-hidden="true"></i></a>
+            <a href="/admin/siswa/{{$item->nis}}" class="btn btn-info"><i class="fa fa-eye" aria-hidden="true"></i></a>
           </td>
         </tr>
         @endforeach

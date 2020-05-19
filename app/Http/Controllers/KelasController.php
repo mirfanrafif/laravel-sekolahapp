@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Guru;
 use App\Kelas;
 use Illuminate\Http\Request;
 
@@ -27,8 +26,7 @@ class KelasController extends Controller
      */
     public function create()
     {
-        $guru = Guru::all();
-        return view('kelas.tambah', ['gurus' => $guru]);
+        return view('kelas.tambah');
     }
 
     /**
@@ -59,17 +57,9 @@ class KelasController extends Controller
     public function show($id)
     {
         $kelas = Kelas::findOrFail($id);
-        $siswa = $kelas->siswa;
-        if ($kelas->guru_id) {
-            $walikelas = Kelas::find($id)->guru;
-        } else {
-            $walikelas = 'tidak ada';
-        }
 
         return view('kelas.detail', [
-            'detail' => $kelas,
-            'siswa' => $siswa,
-            'walikelas' => $walikelas
+            'detail' => $kelas
         ]);
     }
 
@@ -82,11 +72,9 @@ class KelasController extends Controller
     public function edit($id)
     {
         $kelas = Kelas::findOrFail($id);
-        $guru = Guru::all();
 
         return view('kelas.ubah', [
-            'kelas' => $kelas,
-            'gurus' => $guru
+            'kelas' => $kelas
         ]);
     }
 

@@ -9,7 +9,7 @@
     <h3 class="card-title">Tambah Data Siswa</h3>
   </div>
   <div class="card-body">
-    <form action="/siswa/{{$siswa->nis}}" method="POST">
+    <form action="/admin/siswa/{{$siswa->nis}}" method="POST">
       @csrf
       @method('PUT')
       <div class="form-group">

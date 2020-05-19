@@ -16,4 +16,9 @@ class Siswa extends Model
     {
         return $this->belongsTo('App\Kelas');
     }
+
+    public function nilai()
+    {
+        return $this->hasMany('App\Nilai');
+    }
 }

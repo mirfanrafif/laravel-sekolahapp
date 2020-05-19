@@ -17,7 +17,7 @@
     <h3 class="card-title">Tambah Data Siswa</h3>
   </div>
   <div class="card-body">
-    <form action="/siswa" method="POST">
+    <form action="/admin/siswa" method="POST">
       @csrf
       <div class="form-group">
         <label for="nis">NIS</label>

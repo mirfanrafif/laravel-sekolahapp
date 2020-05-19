@@ -32,13 +32,20 @@
         <label for="wali_kelas">Wali Kelas</label>
         <select class="form-control" name="wali_kelas" id="wali_kelas">
           <option value="">Pilih Salah Satu</option>
-          @foreach ($gurus as $guru)
-          <option value="{{$guru->id}}">{{$guru->nama}}</option>
-          @endforeach
         </select>
       </div>
       <button type="submit" class="btn btn-success">Kirim</button>
     </form>
   </div>
 </div>
+<script>
+  $(document).ready(function () {
+    $.get('http://localhost/ci-sekolahapp/api/guru', function (res) {
+      gurus = res.data;
+      gurus.forEach(guru => {
+        $('#wali_kelas').append('<option value="' + guru.id + '">'+ guru.nama +'</option>');
+      });
+    })
+  });
+</script>
 @endsection

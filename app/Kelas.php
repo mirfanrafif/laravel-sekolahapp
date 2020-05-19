@@ -16,9 +16,4 @@ class Kelas extends Model
     {
         return $this->hasMany('App\Siswa');
     }
-
-    public function guru()
-    {
-        return $this->belongsTo('App\Guru');
-    }
 }

@@ -11,11 +11,8 @@
     <p>Nama Kelas : {{$detail->nama_kelas}}</p>
     <p>Jurusan : {{$detail->jurusan}}</p>
     <p>Jumlah Siswa : {{$detail->jumlah_siswa}}</p>
-    @if ($walikelas != 'tidak ada')
-    <p>Wali Kelas : {{$walikelas->nama}}</p>
-    @else
-    <p>Wali Kelas : tidak ada</p>
-    @endif
+    <p id="wali_kelas"></p>
+
     <form action="/admin/kelas/{{$detail->id}}" method="post">
       @csrf
       @method('DELETE')
@@ -38,7 +35,7 @@
         </tr>
       </thead>
       <tbody>
-        @foreach ($siswa as $index => $item)
+        @foreach ($detail->siswa as $index => $item)
         <tr>
           <td>{{$index + 1}}</td>
           <td>{{$item->nis}}</td>
@@ -49,4 +46,14 @@
     </table>
   </div>
 </div>
+
+<script>
+  $(document).ready(function () {
+    $.get('http://localhost/ci-sekolahapp/api/guru?id={{$detail->guru_id}}', function (res) {
+      guru = res.data[0];
+      console.log(guru);
+      $('#wali_kelas').append('Wali Kelas : ' + guru.nama);
+    })
+  });
+</script>
 @endsection

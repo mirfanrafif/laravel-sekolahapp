@@ -13,12 +13,12 @@
     <p>Nama : {{$siswa->nama}}</p>
     <p>Tanggal Lahir : {{$siswa->tgl_lahir}}</p>
     <p>Tahun Ajar : {{$siswa->tahun_ajar}}</p>
-    <form action="/siswa/{{$siswa->nis}}" method="post">
+    <form action="/admin/siswa/{{$siswa->nis}}" method="post">
       @csrf
       @method('DELETE')
       <button class="btn btn-danger float-right ml-2" type="submit">Hapus</button>
     </form>
-    <a href="/siswa/{{$siswa->nis}}/edit" class="btn btn-warning float-right">Ubah</a>
+    <a href="/admin/siswa/{{$siswa->nis}}/edit" class="btn btn-warning float-right">Ubah</a>
   </div>
 </div>
 

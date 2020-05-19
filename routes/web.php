@@ -21,7 +21,8 @@ Auth::routes();
 
 Route::resource('/admin/kelas', 'KelasController')->middleware('auth');
 Route::resource('/admin/siswa', 'SiswaController')->middleware('auth');
-Route::resource('/admin/nilai', 'NilaiController')->middleware('auth');
+Route::get('/admin/nilai', 'NilaiController@index')->middleware('auth');
+Route::get('/admin/nilai/{nis}', 'NilaiController@nilaiSiswa');
 
 
 Route::get('/home', 'HomeController@index')->name('home');
