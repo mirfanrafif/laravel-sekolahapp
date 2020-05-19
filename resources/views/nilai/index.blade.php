@@ -22,6 +22,9 @@
           </div>
           <input type="submit" value="submit" class="btn btn-primary">
         </div>
+        <div class="col-md-6">
+          
+        </div>
       </div>
     </form>
   </div>

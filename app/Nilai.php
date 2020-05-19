@@ -8,16 +8,16 @@ class Nilai extends Model
 {
     protected $table = 'nilai';
     protected $primaryKey = 'id';
-    protected $fillable = ['siswa_id', 'mapel_id', 'pengetahuan', 'keterampilan'];
+    protected $fillable = ['siswa_nis', 'mapel_id', 'pengetahuan', 'keterampilan'];
     public $timestamps = false;
 
     public function siswa()
     {
-        $this->belongsTo('App\Siswa');
+        return $this->belongsTo('App\Siswa');
     }
 
     public function mapel()
     {
-        $this->belongsTo('App\Mapel');
+        return $this->belongsTo('App\Mapel');
     }
 }

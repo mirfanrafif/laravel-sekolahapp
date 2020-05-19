@@ -38,4 +38,24 @@ class NilaiController extends Controller
 
         return view('nilai.siswa', ['siswa' => $siswa]);
     }
+
+    public function tambah($nis)
+    {
+        $siswa = Siswa::find($nis);
+
+        return view('nilai.tambah', ['siswa' => $siswa]);
+    }
+
+    public function simpanNilaiSiswa(Request $request)
+    {
+        $nilai = new Nilai();
+        $nilai->siswa_nis = $request->siswa_nis;
+        $nilai->mapel_id = $request->mapel_id;
+        $nilai->pengetahuan = $request->pengetahuan;
+        $nilai->keterampilan = $request->keterampilan;
+
+        if ($nilai->save()) {
+            return redirect('/admin/nilai/' . $request->siswa_nis);
+        }
+    }
 }

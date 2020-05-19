@@ -55,7 +55,7 @@ class SiswaController extends Controller
         $siswa->kelas_id = $request->id_kelas;
 
         if ($siswa->save()) {
-            return redirect('/siswa');
+            return redirect('/admin/siswa');
         }
     }
 
@@ -114,9 +114,9 @@ class SiswaController extends Controller
         $siswa->kelas_id = $request->id_kelas;
 
         if ($siswa->save()) {
-            return redirect('/siswa');
+            return redirect('/admin/siswa');
         } else {
-            return redirect('/siswa')->with('message', 'Gagal Mengubah Data');
+            return redirect('/admin/siswa')->with('message', 'Gagal Mengubah Data');
         }
     }
 
@@ -131,7 +131,7 @@ class SiswaController extends Controller
         $siswa = Siswa::find($id);
 
         if ($siswa->delete()) {
-            return redirect('/siswa');
+            return redirect('/admin/siswa');
         }
     }
 }

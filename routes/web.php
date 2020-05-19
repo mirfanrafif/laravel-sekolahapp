@@ -23,6 +23,7 @@ Route::resource('/admin/kelas', 'KelasController')->middleware('auth');
 Route::resource('/admin/siswa', 'SiswaController')->middleware('auth');
 Route::get('/admin/nilai', 'NilaiController@index')->middleware('auth');
 Route::get('/admin/nilai/{nis}', 'NilaiController@nilaiSiswa');
-
+Route::get('/admin/nilai/{nis}/tambah', 'NilaiController@tambah');
+Route::post('/admin/nilai/{nis}', 'NilaiController@simpanNilaiSiswa');
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -29,7 +29,6 @@
   <div class="card-body">
     <p>Nama Kelas : {{$siswa->kelas->nama_kelas}}</p>
     <p>Jurusan : {{$siswa->kelas->jurusan}}</p>
-    <p>Wali Kelas : {{$siswa->kelas->guru->nama}}</p>
   </div>
 </div>
 @endsection

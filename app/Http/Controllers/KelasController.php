@@ -44,7 +44,7 @@ class KelasController extends Controller
         $kelas->guru_id = $request->wali_kelas;
 
         if ($kelas->save()) {
-            return redirect('kelas');
+            return redirect('/admin/kelas');
         }
     }
 
