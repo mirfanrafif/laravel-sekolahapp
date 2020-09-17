@@ -9,6 +9,13 @@ use Illuminate\Http\Request;
 
 class NilaiController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -48,6 +55,14 @@ class NilaiController extends Controller
 
     public function simpanNilaiSiswa(Request $request)
     {
+
+        $this->validate($request, [
+            'siswa_nis' => 'required',
+            'mapel_id' => 'required',
+            'pengetahuan' => 'required|numeric',
+            'keterampilan' => 'required|numeric'
+        ]);
+
         $nilai = new Nilai();
         $nilai->siswa_nis = $request->siswa_nis;
         $nilai->mapel_id = $request->mapel_id;

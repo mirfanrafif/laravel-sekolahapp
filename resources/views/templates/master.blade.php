@@ -107,15 +107,15 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="/admin/kelas" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Kelas</p>
-                  </a>
-                </li>
-                <li class="nav-item">
                   <a href="/admin/siswa" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Siswa</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/admin/kelas" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Kelas</p>
                   </a>
                 </li>
                 <li class="nav-item">
